@@ -1,0 +1,5 @@
+MODULE := qmk
+
+SRC += foo.c
+
+include $(RIOTBASE)/Makefile.base
