@@ -128,6 +128,7 @@ $(OBJC_LTO): CFLAGS+=$(LTOFLAGS)
 OBJ_DEPS += $(RIOTBUILD_CONFIG_HEADER_C)
 
 $(OBJC): $(BINDIR)/$(MODULE)/%.o: %.c $(OBJ_DEPS) | $(if $(SHOULD_RUN_KCONFIG),$(KCONFIG_GENERATED_AUTOCONF_HEADER_C))
+	$(info HERE WE GO is $@ and $(patsubst $(RIOTBASE)/%,%,$(abspath $<)) and $(abspath $<))
 	$(Q)$(CCACHE) $(CC) \
 		-DRIOT_FILE_RELATIVE=\"$(patsubst $(RIOTBASE)/%,%,$(abspath $<))\" \
 		-DRIOT_FILE_NOPATH=\"$(notdir $<)\" \

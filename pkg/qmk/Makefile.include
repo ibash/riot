@@ -1,1 +1,95 @@
-INCLUDES += -I$(PKGDIRBASE)/qmk
+QMK_INCLUDES :=
+
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/bar
+
+#DIRS += $(PKGDIRBASE)/qmk/bar
+
+
+# TODO(ibash) get this from .build/obj_handwired_dygma_raise_INCFLAGS
+# by running make keyboard:keymap:dump_vars
+
+
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired/dygma/raise/keymaps/ansi 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/users/ansi 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/. 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired/dygma 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired/dygma/raise 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./platforms/chibios/BLACKPILL_STM32_F411/configs 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/. 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/keymap_extras 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/audio 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/process_keycode 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/api 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/sequencer 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/drivers 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/bootmagic 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/drivers/riot 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/lib/printf 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/common 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/common/riot 
+
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol/chibios 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol/chibios/lufa_utils 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/license 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/oslib/include 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./platforms/chibios/BLACKPILL_STM32_F411/configs 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./platforms/chibios/common/configs 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired/dygma/raise 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./platforms/chibios/common/configs 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/common/portability/GCC 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/common/startup/ARMCMx/compilers/GCC 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/common/startup/ARMCMx/devices/STM32F4xx 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/common/ext/ARM/CMSIS/Core/Include 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/common/ext/ST/STM32F4xx 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/rt/include 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/common/ports/ARMCMx 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/common/ports/ARMCMx/compilers/GCC 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/osal/rt-nil 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/include 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/common/ARMCMx 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/STM32F4xx 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/ADCv2 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/CANv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/CRYPv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/DACv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/DMAv2 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/EXTIv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/GPIOv2 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/I2Cv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/MACv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/OTGv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/QUADSPIv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/RTCv2 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/SPIv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/SDIOv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/TIMv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/USARTv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/ports/STM32/LLD/xWDGv1 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/boards/ST_NUCLEO64_F411RE 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/hal/lib/streams 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/various 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/. 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/keymap_extras 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/audio 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/process_keycode 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/api 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/sequencer 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/drivers 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/quantum/bootmagic 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/drivers/chibios 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/. 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/. 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired/dygma 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired/dygma/raise 
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./platforms/chibios/BLACKPILL_STM32_F411/configs
+
+INCLUDES := $(QMK_INCLUDES) $(INCLUDES)

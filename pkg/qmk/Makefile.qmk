@@ -1,5 +1,144 @@
 MODULE := qmk
 
+CFLAGS += -Wno-empty-body
+CFLAGS += -Wno-unused-parameter
+
 SRC += foo.c
+SRC += bar/bar.c
+
+QMK_KEYBOARD_H := raise.h
+CFLAGS += -DQMK_KEYBOARD_H=\"$(QMK_KEYBOARD_H)\" \
+
+# copy the directory structure of qmk to the output folder so that *.d files can
+# be created by make
+#$(shell cd $(PKGDIRBASE)/qmk && find * -type d -exec mkdir -p $(BINDIR)/$(MODULE)/{} \;)
+
+
+# QUANTUM_SRC
+# .build/obj_handwired_dygma_raise_ansi_SRC 
+# TMK_COMMON_SRC
+# KEYBOARD_SRC
+#
+# SRC  -- has too much stuff
+
+# TODO(ibash) get this from .build/obj_handwired_dygma_raise_INCFLAGS
+# by running make keyboard:keymap:dump_vars
+
+PLATFORM_KEY = riot
+#COMMON_DIR = $(PKGDIRBASE)/qmk/tmk_core/common
+COMMON_DIR = tmk_core/common
+PLATFORM_COMMON_DIR = $(COMMON_DIR)/$(PLATFORM_KEY)
+
+SRC += $(COMMON_DIR)/host.c
+SRC += $(COMMON_DIR)/keyboard.c
+SRC += $(COMMON_DIR)/action.c
+SRC += $(COMMON_DIR)/action_tapping.c
+SRC += $(COMMON_DIR)/action_macro.c
+SRC += $(COMMON_DIR)/action_layer.c
+SRC += $(COMMON_DIR)/action_util.c
+SRC += $(COMMON_DIR)/debug.c
+SRC += $(COMMON_DIR)/sendchar_null.c
+SRC += $(COMMON_DIR)/eeconfig.c
+SRC += $(COMMON_DIR)/report.c
+SRC += $(COMMON_DIR)/usb_util.c
+SRC += $(PLATFORM_COMMON_DIR)/suspend.c
+SRC += $(PLATFORM_COMMON_DIR)/timer.c
+SRC += $(COMMON_DIR)/sync_timer.c
+SRC += $(PLATFORM_COMMON_DIR)/bootloader.c
+
+#$(PRINTF_PATH)/printf.c
+#SRC += $(COMMON_DIR)/printf.c
+
+
+QUANTUM_DIR = quantum
+DEBOUNCE_DIR := $(QUANTUM_DIR)/debounce
+DEBOUNCE_TYPE = sym_defer_g
+
+SRC += $(QUANTUM_DIR)/quantum.c
+SRC += $(QUANTUM_DIR)/send_string.c
+SRC += $(QUANTUM_DIR)/bitwise.c
+SRC += $(QUANTUM_DIR)/led.c
+SRC += $(QUANTUM_DIR)/keymap_common.c
+SRC += $(QUANTUM_DIR)/keycode_config.c
+SRC += $(QUANTUM_DIR)/bootmagic/magic.c
+SRC += $(DEBOUNCE_DIR)/$(DEBOUNCE_TYPE).c
+
+#KEYBOARD_SRC 
+SRC += keyboards/handwired/dygma/raise/raise.c
+
+# .build/obj_handwired_dygma_raise_ansi_SRC
+SRC += keyboards/handwired/dygma/raise/leds.c
+SRC += keyboards/handwired/dygma/raise/matrix.c
+SRC += keyboards/handwired/dygma/raise/raise.c
+SRC += keyboards/handwired/dygma/raise/keymaps/ansi/keymap.c
+SRC += quantum/quantum.c
+SRC += quantum/send_string.c
+SRC += quantum/bitwise.c
+SRC += quantum/led.c
+SRC += quantum/keymap_common.c
+SRC += quantum/keycode_config.c
+SRC += quantum/bootmagic/magic.c
+SRC += quantum/debounce/sym_defer_g.c
+SRC += quantum/mousekey.c
+#SRC += common/chibios/eeprom_teensy.c
+SRC += quantum/color.c
+SRC += quantum/rgb_matrix.c
+SRC += quantum/rgb_matrix_drivers.c
+SRC += quantum/process_keycode/process_rgb.c
+SRC += quantum/led_tables.c
+SRC += quantum/process_keycode/process_space_cadet.c
+SRC += quantum/process_keycode/process_magic.c
+SRC += quantum/process_keycode/process_grave_esc.c
+
+#i2c_master.clib
+#./lib/chibios/os/common/startup/ARMCMx/compilers/GCC/crt0_v7m.S
+#./lib/chibios/os/common/startup/ARMCMx/compilers/GCC/vectors.S
+#./lib/chibios/os/common/ports/ARMCMx/compilers/GCC/chcoreasm_v7m.S
+SRC += common/host.c
+SRC += common/keyboard.c
+SRC += common/action.c
+SRC += common/action_tapping.c
+SRC += common/action_macro.c
+SRC += common/action_layer.c
+SRC += common/action_util.c
+SRC += common/debug.c
+SRC += common/sendchar_null.c
+SRC += common/eeconfig.c
+SRC += common/report.c
+SRC += common/usb_util.c
+#SRC += common/chibios/suspend.c
+#SRC += common/chibios/timer.c
+SRC += common/sync_timer.c
+#SRC += common/chibios/bootloader.c
+
+SRC += lib/printf/printf.c
+SRC += common/printf.c
+#protocol/chibios/usb_main.c
+#protocol/chibios/main.c
+SRC += usb_descriptor.c
+#protocol/chibios/usb_driver.c
+#protocol/chibios/usb_util.c
+#./lib/chibios/os/oslib/src/chmboxes.c
+#./lib/chibios/os/oslib/src/chmemcore.c
+#./lib/chibios/os/oslib/src/chmemheaps.c
+#./lib/chibios/os/oslib/src/chmempools.c
+#./lib/chibios/os/oslib/src/chpipes.c
+#./lib/chibios/os/oslib/src/chobjcaches.c
+#./lib/chibios/os/oslib/src/chdelegates.c
+#./lib/chibios/os/oslib/src/chfactory.c
+
+# picked myself
+SRC += common/wait.c
+
+#.build/obj_handwired_dygma_raise_CONFIG_FLAGS=
+CFLAGS += -include keyboards/handwired/dygma/raise/config.h
+#CFLAGS += -include .build/obj_handwired_dygma_raise/src/info_config.h
+#CFLAGS += -include .build/obj_handwired_dygma_raise/src/layouts.h
+#-include ./platforms/chibios/BLACKPILL_STM32_F411/configs/config.h
+# .build/obj_handwired_dygma_raise_ansi_CONFIG_FLAGS=
+CFLAGS += -include keyboards/handwired/dygma/raise/config.h
+#CFLAGS += -include .build/obj_handwired_dygma_raise/src/info_config.h
+#CFLAGS += -include .build/obj_handwired_dygma_raise/src/layouts.h
+#-include ./platforms/chibios/BLACKPILL_STM32_F411/configs/config.h
 
 include $(RIOTBASE)/Makefile.base
