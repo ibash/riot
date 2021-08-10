@@ -2,12 +2,29 @@ MODULE := qmk
 
 CFLAGS += -Wno-empty-body
 CFLAGS += -Wno-unused-parameter
+CFLAGS += -Wno-unused-variable
+CFLAGS += -Wno-unused-but-set-variable
+CFLAGS += -Wno-type-limits
+
+CFLAGS += -std=gnu11
 
 SRC += foo.c
 SRC += bar/bar.c
 
-QMK_KEYBOARD_H := raise.h
-CFLAGS += -DQMK_KEYBOARD_H=\"$(QMK_KEYBOARD_H)\" \
+# TMK_COMMON_DEFS
+CFLAGS += -DPRINTF_DISABLE_SUPPORT_FLOAT -DPRINTF_DISABLE_SUPPORT_EXPONENTIAL -DPRINTF_DISABLE_SUPPORT_LONG_LONG -DPRINTF_DISABLE_SUPPORT_PTRDIFF_T -DMOUSE_SHARED_EP -DRAW_ENABLE -DNO_PRINT -DNO_DEBUG -DSHARED_EP_ENABLE
+
+# PROJECT_DEFS
+CFLAGS += -DKEYBOARD_ -DKEYBOARD_ -DKEYBOARD_handwired -DKEYBOARD_handwired_dygma -DKEYBOARD_handwired_dygma_raise -DMOUSEKEY_ENABLE -DMOUSE_ENABLE -DEEPROM_ENABLE -DEEPROM_VENDOR -DRGB_MATRIX_ENABLE -DUSE_CIE1931_CURVE -DSPACE_CADET_ENABLE -DMAGIC_KEYCODE_ENABLE -DGRAVE_ESC_ENABLE -DBOOTLOADER_STM32_DFU -DPRINTF_DISABLE_SUPPORT_FLOAT -DPRINTF_DISABLE_SUPPORT_EXPONENTIAL -DPRINTF_DISABLE_SUPPORT_LONG_LONG -DPRINTF_DISABLE_SUPPORT_PTRDIFF_T -DMOUSE_SHARED_EP -DRAW_ENABLE -DNO_PRINT -DNO_DEBUG -DSHARED_EP_ENABLE
+
+# OPT_DEFS
+CFLAGS += -DKEYBOARD_ -DKEYBOARD_ -DKEYBOARD_handwired -DKEYBOARD_handwired_dygma -DKEYBOARD_handwired_dygma_raise -DMOUSEKEY_ENABLE -DMOUSE_ENABLE -DEEPROM_ENABLE -DEEPROM_VENDOR -DRGB_MATRIX_ENABLE -DUSE_CIE1931_CURVE -DSPACE_CADET_ENABLE -DMAGIC_KEYCODE_ENABLE -DGRAVE_ESC_ENABLE -DBOOTLOADER_STM32_DFU -DPRINTF_DISABLE_SUPPORT_FLOAT -DPRINTF_DISABLE_SUPPORT_EXPONENTIAL -DPRINTF_DISABLE_SUPPORT_LONG_LONG -DPRINTF_DISABLE_SUPPORT_PTRDIFF_T -DMOUSE_SHARED_EP -DRAW_ENABLE -DNO_PRINT -DNO_DEBUG -DSHARED_EP_ENABLE
+
+#.build/obj_handwired_dygma_raise_ansi_DEFS
+CFLAGS += -DKEYBOARD_ -DKEYBOARD_ -DKEYBOARD_handwired -DKEYBOARD_handwired_dygma -DKEYBOARD_handwired_dygma_raise -DMOUSEKEY_ENABLE -DMOUSE_ENABLE -DEEPROM_ENABLE -DEEPROM_VENDOR -DRGB_MATRIX_ENABLE -DUSE_CIE1931_CURVE -DSPACE_CADET_ENABLE -DMAGIC_KEYCODE_ENABLE -DGRAVE_ESC_ENABLE -DBOOTLOADER_STM32_DFU -DPRINTF_DISABLE_SUPPORT_FLOAT -DPRINTF_DISABLE_SUPPORT_EXPONENTIAL -DPRINTF_DISABLE_SUPPORT_LONG_LONG -DPRINTF_DISABLE_SUPPORT_PTRDIFF_T -DMOUSE_SHARED_EP -DRAW_ENABLE -DNO_PRINT -DNO_DEBUG -DSHARED_EP_ENABLE  -DQMK_KEYBOARD=\"handwired/dygma/raise\" -DQMK_KEYBOARD_H=\"raise.h\" -DQMK_KEYMAP=\"ansi\" -DQMK_KEYMAP_H=\"ansi.h\" -DQMK_KEYMAP_CONFIG_H=\"keyboards/handwired/dygma/raise/keymaps/ansi/config.h\" -DQMK_SUBPROJECT -DQMK_SUBPROJECT_H -DQMK_SUBPROJECT_CONFIG_H
+
+#.build/obj_handwired_dygma_raise_DEFS
+CFLAGS += -DKEYBOARD_ -DKEYBOARD_ -DKEYBOARD_handwired -DKEYBOARD_handwired_dygma -DKEYBOARD_handwired_dygma_raise -DMOUSEKEY_ENABLE -DMOUSE_ENABLE -DEEPROM_ENABLE -DEEPROM_VENDOR -DRGB_MATRIX_ENABLE -DUSE_CIE1931_CURVE -DSPACE_CADET_ENABLE -DMAGIC_KEYCODE_ENABLE -DGRAVE_ESC_ENABLE -DBOOTLOADER_STM32_DFU -DPRINTF_DISABLE_SUPPORT_FLOAT -DPRINTF_DISABLE_SUPPORT_EXPONENTIAL -DPRINTF_DISABLE_SUPPORT_LONG_LONG -DPRINTF_DISABLE_SUPPORT_PTRDIFF_T -DMOUSE_SHARED_EP -DRAW_ENABLE -DNO_PRINT -DNO_DEBUG -DSHARED_EP_ENABLE
 
 # copy the directory structure of qmk to the output folder so that *.d files can
 # be created by make
@@ -94,28 +111,28 @@ SRC += quantum/process_keycode/process_grave_esc.c
 #./lib/chibios/os/common/startup/ARMCMx/compilers/GCC/crt0_v7m.S
 #./lib/chibios/os/common/startup/ARMCMx/compilers/GCC/vectors.S
 #./lib/chibios/os/common/ports/ARMCMx/compilers/GCC/chcoreasm_v7m.S
-SRC += common/host.c
-SRC += common/keyboard.c
-SRC += common/action.c
-SRC += common/action_tapping.c
-SRC += common/action_macro.c
-SRC += common/action_layer.c
-SRC += common/action_util.c
-SRC += common/debug.c
-SRC += common/sendchar_null.c
-SRC += common/eeconfig.c
-SRC += common/report.c
-SRC += common/usb_util.c
-#SRC += common/chibios/suspend.c
-#SRC += common/chibios/timer.c
-SRC += common/sync_timer.c
-#SRC += common/chibios/bootloader.c
+SRC += tmk_core/common/host.c
+SRC += tmk_core/common/keyboard.c
+SRC += tmk_core/common/action.c
+SRC += tmk_core/common/action_tapping.c
+SRC += tmk_core/common/action_macro.c
+SRC += tmk_core/common/action_layer.c
+SRC += tmk_core/common/action_util.c
+SRC += tmk_core/common/debug.c
+SRC += tmk_core/common/sendchar_null.c
+SRC += tmk_core/common/eeconfig.c
+SRC += tmk_core/common/report.c
+SRC += tmk_core/common/usb_util.c
+#SRC += tmk_core/common/chibios/suspend.c
+#SRC += tmk_core/common/chibios/timer.c
+SRC += tmk_core/common/sync_timer.c
+#SRC += tmk_core/common/chibios/bootloader.c
 
 SRC += lib/printf/printf.c
-SRC += common/printf.c
+SRC += tmk_core/common/printf.c
 #protocol/chibios/usb_main.c
 #protocol/chibios/main.c
-SRC += usb_descriptor.c
+SRC += tmk_core/protocol/usb_descriptor.c
 #protocol/chibios/usb_driver.c
 #protocol/chibios/usb_util.c
 #./lib/chibios/os/oslib/src/chmboxes.c
@@ -128,7 +145,7 @@ SRC += usb_descriptor.c
 #./lib/chibios/os/oslib/src/chfactory.c
 
 # picked myself
-SRC += common/wait.c
+#SRC += common/wait.c
 
 #.build/obj_handwired_dygma_raise_CONFIG_FLAGS=
 CFLAGS += -include keyboards/handwired/dygma/raise/config.h

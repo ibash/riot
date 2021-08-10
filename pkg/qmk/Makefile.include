@@ -34,8 +34,8 @@ QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/common
 QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/common/riot 
 
 QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol 
-#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol/chibios 
-#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol/chibios/lufa_utils 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol/riot 
+QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/tmk_core/protocol/riot/lufa_utils 
 #QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/license 
 #QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./lib/chibios/os/oslib/include 
 #QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./platforms/chibios/BLACKPILL_STM32_F411/configs 
@@ -91,5 +91,7 @@ QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired
 QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired/dygma 
 QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/keyboards/handwired/dygma/raise 
 #QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/./platforms/chibios/BLACKPILL_STM32_F411/configs
+
+#QMK_INCLUDES += -I$(PKGDIRBASE)/qmk/lib/lufa
 
 INCLUDES := $(QMK_INCLUDES) $(INCLUDES)
